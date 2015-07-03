@@ -56,14 +56,11 @@ when 'debian'
 
 when 'rhel'
 
-  yum_key 'oracle-virtualbox' do
-    url 'http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc'
-    action :add
-  end
-
   yum_repository 'oracle-virtualbox' do
     description 'Oracle Linux / RHEL / CentOS-$releasever / $basearch - VirtualBox'
     url 'http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch'
+    gpgkey 'https://www.virtualbox.org/download/oracle_vbox.asc'
+    action :create
   end
 
   package "VirtualBox-#{node['virtualbox']['version']}"
