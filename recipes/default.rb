@@ -22,10 +22,18 @@ when 'mac_os_x'
 
   sha256sum = vbox_sha256sum(node['virtualbox']['url'])
 
+  # starting from version 4.1.22, Oracle started packaging the Mac OS dmg
+  # as pkg, as opposed to mpkg before
+  dmg_package_type = if Gem::Version.new(node['virtualbox']['version']) > Gem::Version.new('4.1.20')
+    'pkg'
+  else
+    'mkpg'
+  end
+
   dmg_package 'VirtualBox' do
     source node['virtualbox']['url']
     checksum sha256sum
-    type 'mpkg'
+    type dmg_package_type
   end
 
 when 'windows'

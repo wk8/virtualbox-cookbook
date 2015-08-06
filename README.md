@@ -16,6 +16,10 @@ Changes
 * Add dependencies on required per-platform cookbooks (required for
  Chef 11's chef-solo).
 
+## v0.7.3:
+
+* Use the correct dmg package format depending on VirtualBox's version.
+
 ## v0.7.2:
 
 * Update OS X installer to use new pkg format - thanks josephholsten.

@@ -28,3 +28,4 @@ module Vbox
 end
 
 Chef::Recipe.send(:include, Vbox::Helpers)
+Chef::Node.send(:include, Vbox::Helpers)
